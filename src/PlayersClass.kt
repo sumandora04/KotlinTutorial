@@ -33,11 +33,28 @@ class PlayersClass(val playerName: String, var level: Int = 1, var lives: Int = 
     }
 
     /* Overloading the dropLoot() function: */
-    fun dropLoot(itemName: String): Boolean {
+    /*fun dropLoot(itemName: String): Boolean {
         println("$itemName will be dropped.")
         return inventory.removeIf { it.name == itemName } // removeIf{} will check the condition and remove the item-- inbuilt function.
         // it.name --> current item in the inventory;
         // itemName --> value passed to the function;
+    }*/
+
+    fun dropLoot(itemName: String): Boolean {
+        println("$itemName will be dropped.")
+        var result=false
+        for (item in inventory){
+            if (item.name == itemName){
+                inventory.remove(item)
+                result=true
+                break
+            }
+        }
+
+        if (!result){
+            println("No such Item $itemName found in inventory.")
+        }
+        return result
     }
 
     /* fun show(){

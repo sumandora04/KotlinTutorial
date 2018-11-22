@@ -37,10 +37,11 @@ fun main(args: Array<String>) {
     println()
 
 
-
+    val dracula = VampireKing("Dracula")
+    println(dracula)
 
     //Use for loop and go to battle 5 times
-    for (battle in 1..5) {
+ /*   for (battle in 1..5) {
         val dracula = VampireKing("Dracula")
         println(dracula)
         //Kill the dracula using while loop:
@@ -57,6 +58,21 @@ fun main(args: Array<String>) {
         }
         println("===========================================")
     }
+*/
 
+    dracula.lives=0
+
+    do {
+        if (dracula.dodges()) {
+            dracula.lives+=1
+            continue
+        }
+        if (dracula.runAway()) {
+            println("Dracula ran away...")
+            break
+        } else {
+            dracula.takeDamage(80)
+        }
+    }  while (dracula.lives > 0)
 //    println(dracula)
 }
